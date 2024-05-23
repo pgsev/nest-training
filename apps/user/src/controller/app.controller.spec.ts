@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from '../service/app.service';
-import { NotFoundException } from '@nestjs/common';
 
 jest.mock('../service/app.service'); // 模拟AppService
 
