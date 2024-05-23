@@ -10,9 +10,7 @@ export class AppService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
-  getHello(): string {
-    return 'Hello World!';
-  }
+
 
   /**
    * Find user information based on username
@@ -29,15 +27,10 @@ export class AppService {
    * @param user Information about the user to be created
    */
   createUser(user: User) {
-    let resultPromise = this.userRepository.insert(user);
-    console.log("resultPromise: "+resultPromise);
-    return resultPromise.then(value => {
-      console.log("createUser: "+value);
-      return value;
-    })
+    return this.userRepository.insert(user);
   }
 
-  /**
+    /**
    * Update user information based on username
    * @param username Specifies the username to be updated
    * @param updateUserDto

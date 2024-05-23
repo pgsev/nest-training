@@ -8,7 +8,7 @@ import Redis from 'ioredis';
 import { LoginDto } from '../entities/dto/login.dto';
 import { RegisterDto } from '../entities/dto/register.dto';
 
-describe('AuthController', () => {
+describe('AppController', () => {
   let authController: AppController;
   let authService: AppService;
   let httpService: HttpService;

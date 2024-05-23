@@ -22,15 +22,7 @@ export class AppController {
     private configService: ConfigService,
   ) {}
 
-  /**
-   * test case
-   */
-  @Public()
-  @ApiOperation({ summary: 'test interface' })
-  @Get()
-  getHello() {
-    return this.configService.get('database');
-  }
+
 
   /**
    * Get user information by username
