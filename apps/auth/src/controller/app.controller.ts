@@ -10,8 +10,6 @@ import { AuthGuard } from '../guard/auth.guard';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-
-
   /**
    * users login
    * @param loginDto
@@ -49,5 +47,4 @@ export class AppController {
   async logout(@Req() req: Request) {
     return await this.appService.logout(req);
   }
-
 }

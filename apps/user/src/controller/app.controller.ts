@@ -19,7 +19,6 @@ import { UpdateUserDto } from '../entities/dto/update.user.dto';
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    private configService: ConfigService,
   ) {}
 
 

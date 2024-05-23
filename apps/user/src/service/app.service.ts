@@ -10,8 +10,6 @@ export class AppService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
-
-
   /**
    * Find user information based on username
    * @param username
@@ -30,7 +28,7 @@ export class AppService {
     return this.userRepository.insert(user);
   }
 
-    /**
+  /**
    * Update user information based on username
    * @param username Specifies the username to be updated
    * @param updateUserDto

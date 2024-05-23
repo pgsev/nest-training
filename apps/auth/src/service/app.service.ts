@@ -16,7 +16,7 @@ export class AppService {
     private httpService: HttpService,
     private jwtService: JwtService,
     private configService: ConfigService,
-    @InjectRedis() private  redis: Redis,
+    @InjectRedis() private redis: Redis,
   ) {}
 
   async login(loginDto: LoginDto) {
@@ -47,6 +47,7 @@ export class AppService {
     const value = await firstValueFrom(
       this.httpService.post(this.getUserServiceUrl(), registerDto),
     );
+
     if (value.data) {
       return {
         affected_rows: value.data.data.raw.length,

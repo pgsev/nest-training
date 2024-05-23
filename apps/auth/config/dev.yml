@@ -6,5 +6,5 @@ redis:
       db: 0
 
 user-service:
-  host: 117.72.69.39
+  host: localhost #117.72.69.39
   port: 3001
