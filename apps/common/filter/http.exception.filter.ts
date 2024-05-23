@@ -18,7 +18,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
         resultMessage = exceptionResponse.message;
       }
     } catch (e) {}
-
     const errorResponse = {
       code: 400,
       data: null,

@@ -7,6 +7,7 @@ import { RedisModule } from '@nestjs-modules/ioredis';
 import configuration from '../configuration/configuration';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AUTH_CONSTANTS } from '../entities/constant/auth.constants';
+import { CommonModule } from "../../../common/common.module";
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AUTH_CONSTANTS } from '../entities/constant/auth.constants';
       load: [configuration],
       isGlobal: true,
     }),
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

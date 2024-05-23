@@ -10,6 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { USER_CONSTANTS } from '../entities/constant/user.constants';
 import configuration from '../configuration/configuration';
+import { CommonModule } from "../../../common/common.module";
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import configuration from '../configuration/configuration';
         configService.get(USER_CONSTANTS.DB_ENV),
     }),
     TypeOrmModule.forFeature([User]),
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [

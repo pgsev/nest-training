@@ -8,7 +8,7 @@ const envPathFileName = `${process.env.NODE_ENV || 'dev'}.yml`;
 
 function readYamlFile(fileName: string) {
   // 获取文件路径
-  const filePath = path.join(__dirname, '../../config', fileName);
+  const filePath = path.join(__dirname, '../../../../config', fileName);
   const file = fs.readFileSync(filePath, 'utf8');
   return yaml.load(file);
 }
