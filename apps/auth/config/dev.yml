@@ -1,0 +1,10 @@
+redis:
+  type: 'single'
+  options:
+      host: '117.72.69.39'
+      port: 16379
+      db: 0
+
+user-service:
+  host: localhost
+  port: 3001
