@@ -29,7 +29,12 @@ export class AppService {
    * @param user Information about the user to be created
    */
   createUser(user: User) {
-    return this.userRepository.insert(user);
+    let resultPromise = this.userRepository.insert(user);
+    console.log("resultPromise: "+resultPromise);
+    return resultPromise.then(value => {
+      console.log("createUser: "+value);
+      return value;
+    })
   }
 
   /**

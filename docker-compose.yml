@@ -1,0 +1,66 @@
+version: "3.0"
+
+services:
+  redis_demo:
+    container_name: redis_demo
+    image: daocloud.io/library/redis:6.0.3-alpine3.11
+    command: redis-server --appendonly yes
+    ports:
+      - 16379:6379
+    restart: on-failure
+    volumes:
+      - ./deploy/redis/db:/data
+      - ./deploy/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./deploy/redis/logs:/logs
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      - my-server_demo
+
+
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+
+  auth-demo:
+    container_name: auth
+    build:
+      context: .
+      dockerfile: apps/auth/Dockerfile
+    ports:
+      - 3000:3000
+    restart: on-failure
+    networks:
+      - my-server_demo
+    depends_on:
+      - redis_demo
+      - user-demo
+
+  user-demo:
+    container_name: user
+    build:
+      context: .
+      dockerfile: apps/user/Dockerfile
+    ports:
+      - 3001:3001
+    restart: on-failure
+    networks:
+      - my-server_demo
+    depends_on:
+      - redis_demo
+      - postgres
+
+
+
+networks:
+  my-server_demo:

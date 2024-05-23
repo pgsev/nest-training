@@ -10,12 +10,7 @@ import { AuthGuard } from '../guard/auth.guard';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @UseGuards(AuthGuard)
-  @ApiOperation({ summary: 'test interface' })
-  @Get('getHello')
-  async getHello() {
-    return await this.appService.getHello();
-  }
+
 
   /**
    * users login
@@ -55,15 +50,4 @@ export class AppController {
     return await this.appService.logout(req);
   }
 
-  /**
-   * test interface
-   */
-  @ApiOperation({
-    summary: 'login interface',
-    description: 'interface for user login ',
-  })
-  @Get('config')
-  async getConfig() {
-    return await this.appService.getConfig();
-  }
 }
