@@ -9,7 +9,6 @@ import {
 } from '@nestjs/common';
 import { AppService } from '../service/app.service';
 import { User } from '../entities/repository/user.entity';
-import { ConfigService } from '@nestjs/config';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Public } from '../entities/decorator/isPublic';
 import { UpdateUserDto } from '../entities/dto/update.user.dto';
@@ -17,11 +16,7 @@ import { UpdateUserDto } from '../entities/dto/update.user.dto';
 @ApiTags('user-interface')
 @Controller('user')
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-  ) {}
-
-
+  constructor(private readonly appService: AppService) {}
 
   /**
    * Get user information by username

@@ -12,7 +12,7 @@ user-service:
 
 database:
   type: 'postgres'
-  host: 'localhost'
+  host: 117.72.69.39 #'localhost'
   port: 5432
   username: postgres
   password: '123'
