@@ -5,7 +5,6 @@ import { NotFoundException } from '@nestjs/common';
 
 jest.mock('typeorm', () => {
   const originalModule = jest.requireActual('typeorm');
-
   // 模拟的 Repository 类
   class MockRepository<T> {
     // ... 这里可以添加你需要模拟的方法，例如 find, save 等
@@ -26,7 +25,7 @@ jest.mock('typeorm', () => {
 
   return {
     ...originalModule,
-    getRepository: jest.fn().mockImplementation((entity: any) => {
+    getRepository: jest.fn().mockImplementation(() => {
       return new MockRepository<User>();
     }),
   };
@@ -40,6 +39,7 @@ describe('UserService', () => {
     // 初始化UserService，并获取模拟的Repository实例
 
     // 由于我们模拟了getRepository，因此需要直接获取该模拟实例
+
     userRepository = getRepository(User) as Repository<User>;
     userService = new AppService(userRepository);
   });

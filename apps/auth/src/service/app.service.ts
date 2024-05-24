@@ -47,7 +47,6 @@ export class AppService {
     const value = await firstValueFrom(
       this.httpService.post(this.getUserServiceUrl(), registerDto),
     );
-
     if (value.data) {
       return {
         affected_rows: value.data.data.raw.length,
